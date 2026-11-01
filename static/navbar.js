@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+function setupNavbarBurgers() {
 	// Get all "navbar-burger" elements
 	const navbarBurgers = Array.prototype.slice.call(document.querySelectorAll(".navbar-burger"), 0);
 
@@ -17,4 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		});
 	}
-});
+}
+
+// navbar.js loads async, so DOMContentLoaded may already have fired
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", setupNavbarBurgers);
+} else {
+	setupNavbarBurgers();
+}
